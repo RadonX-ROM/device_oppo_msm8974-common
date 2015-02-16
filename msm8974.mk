@@ -18,8 +18,6 @@ ifneq ($(QCPATH),)
 $(call inherit-product-if-exists, $(QCPATH)/common/config/device-vendor.mk)
 endif
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 # overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -203,6 +201,10 @@ PRODUCT_PACKAGES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+
+# Enable USB OTG interface
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=true
 
 # proprietary wifi display, if available
 ifneq ($(QCPATH),)
