@@ -171,6 +171,9 @@ TARGET_LDPRELOAD := libNimsWrap.so
 endif
 endif
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/msm8974-common
+
 # SELinux policies
 # qcom sepolicy
 include device/qcom/sepolicy/sepolicy.mk
