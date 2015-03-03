@@ -190,6 +190,7 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     libbson \
     libcnefeatureconfig \
+    libtinyxml \
     libxml2
 
 # ANT+
