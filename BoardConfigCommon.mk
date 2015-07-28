@@ -18,7 +18,7 @@
 -include device/oppo/common/BoardConfigCommon.mk
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := device/oppo/msm8974-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/oppo/msm8974-caf-common/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -38,10 +38,10 @@ TARGET_CPU_VARIANT := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Assertions
-TARGET_BOARD_INFO_FILE ?= device/oppo/msm8974-common/board-info.txt
+TARGET_BOARD_INFO_FILE ?= device/oppo/msm8974-caf-common/board-info.txt
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/oppo/msm8974-common/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/oppo/msm8974-caf-common/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -81,10 +81,10 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # CM Hardware
-BOARD_HARDWARE_CLASS += device/oppo/msm8974-common/cmhw
+BOARD_HARDWARE_CLASS += device/oppo/msm8974-caf-common/cmhw
 
 # Graphics
-BOARD_EGL_CFG := device/oppo/msm8974-common/configs/egl.cfg
+BOARD_EGL_CFG := device/oppo/msm8974-caf-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_USES_ION := true
@@ -132,7 +132,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_NO_RPC := true
 
 # GPS HAL lives here
-TARGET_GPS_HAL_PATH := device/oppo/msm8974-common/gps
+TARGET_GPS_HAL_PATH := device/oppo/msm8974-caf-common/gps
 TARGET_PROVIDES_GPS_LOC_API := true
 
 # QCRIL
@@ -176,6 +176,6 @@ endif
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-        device/oppo/msm8974-common/sepolicy
+        device/oppo/msm8974-caf-common/sepolicy
 
--include vendor/oppo/msm8974-common/BoardConfigVendor.mk
+-include vendor/oppo/msm8974-caf-common/BoardConfigVendor.mk
