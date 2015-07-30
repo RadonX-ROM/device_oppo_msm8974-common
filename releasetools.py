@@ -20,6 +20,6 @@ def FullOTA_InstallEnd(info):
     info.script.AppendExtra('delete_recursive("/system/priv-app/AudioFX");')
     info.script.AppendExtra('delete_recursive("/system/app/AudioFX");')
     info.script.AppendExtra('ui_print("...Modifying build.prop...");')
-    info.script.AppendExtra('sed -i -e "s/ro.product.device=baconcaf/ro.product.device=bacon/g" /system/build.prop;')
+    info.script.AppendExtra('run_program("/sbin/busybox", "sed", "-i -e", "s/ro.product.device=baconcaf/ro.product.device=bacon/g", "/system/build.prop");')
     info.script.AppendExtra('unmount("/system");')
 
