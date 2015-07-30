@@ -172,7 +172,7 @@ endif
 endif
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/msm8974-common
+TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/msm8974-caf-common
 
 # SELinux policies
 # qcom sepolicy
