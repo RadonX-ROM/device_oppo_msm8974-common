@@ -403,8 +403,13 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "smartmax"
-    write /sys/kernel/cpu_input_boost/boost_freqs "960000 883200 729600"
+    write /sys/kernel/cpu_input_boost/ib_freqs "960000 883200 729600"
+    write /sys/kernel/cpu_input_boost/load_based_syncs 1
+    write /sys/kernel/cpu_input_boost/migration_boost_ms 20
+    write /sys/kernel/cpu_input_boost/migration_load_threshold 25
+    write /sys/kernel/cpu_input_boost/sync_threshold 1574400
     write /sys/kernel/cpu_input_boost/enabled 1
+    write /dev/cpuctl/cpu.notify_on_migrate 1
     write /sys/block/mmcblk0/queue/scheduler deadline
     write /sys/kernel/msm_thermal/enabled 0
     write /sys/kernel/msm_thermal/low_thresh "1574400 54 48"
