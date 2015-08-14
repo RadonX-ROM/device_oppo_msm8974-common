@@ -52,7 +52,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    tinymix
+    tinymix \
+    SnapdragonAudio+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true \
