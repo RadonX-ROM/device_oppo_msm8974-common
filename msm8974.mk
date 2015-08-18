@@ -34,6 +34,14 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/MaxxAudio/MaxxAudioFX.apk:system/priv-app/MaxxAudioFX.apk \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/libMA3-processcode-Coretex_A9.so:system/vendor/lib/libMA3-processcode-Coretex_A9.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/libMA3-processcode-Qualcomm.so:system/vendor/lib/libMA3-processcode-Qualcomm.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/soundfx/libmaxxeffect-cembedded.so:system/vendor/lib/soundfx/libmaxxeffect-cembedded.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/soundfx/libqcbassboost.so:system/vendor/lib/soundfx/libqcbassboost.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/soundfx/libqcreverb.so:system/vendor/lib/soundfx/libqcreverb.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/lib/soundfx/libqcvirt.so:system/vendor/lib/soundfx/libqcvirt.so \
+    $(LOCAL_PATH)/audio/MaxxAudio/waves/default.mps:system/etc/waves/default.mps \
     $(LOCAL_PATH)/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
@@ -60,7 +68,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.qcom_parser=3310129 \
     audio.offload.buffer.size.kb=32 \
     av.offload.enable=true \
-    av.streaming.offload.enable=true \
+    av.streaming.offload.enable=false \
     use.voice.path.for.pcm.voip=true \
     audio.offload.multiple.enabled=false \
     audio.offload.gapless.enabled=true \

@@ -379,9 +379,9 @@ on property:service.bootanim.exit=1
 on property:init.svc.bootanim=stopped
     # Set light thermal restrictions while optimizing apps
     # [throttle_freq, throttle_temp, unthrottle_temp]
-    write /sys/kernel/msm_thermal/low_thresh "1728000 62 57"
-    write /sys/kernel/msm_thermal/mid_thresh "1574400 68 61"
-    write /sys/kernel/msm_thermal/high_thresh "1267200 72 69"
+    write /sys/kernel/msm_thermal/low_thresh "1728000 45 43"
+    write /sys/kernel/msm_thermal/mid_thresh "1574400 50 47"
+    write /sys/kernel/msm_thermal/high_thresh "1267200 55 53"
     write /sys/kernel/msm_thermal/enabled 1
 
 on property:sys.boot_completed=1
@@ -403,13 +403,18 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "smartmax"
-    write /sys/kernel/cpu_input_boost/boost_freqs "960000 883200 729600"
+    write /sys/kernel/cpu_input_boost/ib_freqs "960000 883200 729600"
+    write /sys/kernel/cpu_input_boost/load_based_syncs 1
+    write /sys/kernel/cpu_input_boost/migration_boost_ms 20
+    write /sys/kernel/cpu_input_boost/migration_load_threshold 25
+    write /sys/kernel/cpu_input_boost/sync_threshold 1574400
     write /sys/kernel/cpu_input_boost/enabled 1
+    write /dev/cpuctl/cpu.notify_on_migrate 1
     write /sys/block/mmcblk0/queue/scheduler deadline
     write /sys/kernel/msm_thermal/enabled 0
-    write /sys/kernel/msm_thermal/low_thresh "1574400 54 48"
-    write /sys/kernel/msm_thermal/mid_thresh "1267200 60 55"
-    write /sys/kernel/msm_thermal/high_thresh "960000 66 62"
+    write /sys/kernel/msm_thermal/low_thresh "1574400 44 41"
+    write /sys/kernel/msm_thermal/mid_thresh "1190400 49 46"
+    write /sys/kernel/msm_thermal/high_thresh "960000 53 50"
     write /sys/kernel/msm_thermal/enabled 1
     start mpdecision
 
@@ -702,6 +707,7 @@ service pfm /system/bin/pfm
 # CM Performance Profiles
 on property:sys.perf.profile=0
     stop mpdecision
+    write /sys/kernel/msm_thermal/user_maxfreq 729600
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -715,6 +721,7 @@ on property:sys.perf.profile=0
 
 on property:sys.perf.profile=1
     stop mpdecision
+    write /sys/kernel/msm_thermal/user_maxfreq 0
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -723,19 +730,12 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "smartmax"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "smartmax"
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 75
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1190400
-    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
-    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
     start mpdecision
 
 on property:sys.perf.profile=2
     stop mpdecision
+    write /sys/kernel/msm_thermal/user_maxfreq 0
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
